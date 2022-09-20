@@ -84,9 +84,11 @@ app.post(
 
 app.get("/file", async (req, res, next) => {
   try {
-    const getFile = await bucket.getFiles();
-    // console.log("getFile => ", getFile);
-    console.log(getFile[0][1].metadata.mediaLink);
+    const getFile = await bucket.file(
+      "documents/c4fea2bf-028f-4012-a481-193a4e0daeb9-Screenshot_93.png"
+    );
+    console.log("getFile => ", getFile);
+    // console.log(getFile[0][2].metadata.mediaLink);
   } catch (error) {
     console.log(error);
     return res.status(500).json({
